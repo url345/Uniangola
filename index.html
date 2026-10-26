@@ -287,7 +287,7 @@ b.addEventListener('click',function(){set(true)});
 o.addEventListener('click',function(){set(false)});
 d.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
 // Valores reais da campanha: edite aqui
-var D={raised:0,goal:1395800,supporters:0,hearts:0};
+var D={raised:333500,goal:1395800,supporters:84278,hearts:0};
 (function(){var nf=function(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})},ni=function(n){return n.toLocaleString('pt-BR')};
 var p=D.goal>0?Math.min(100,Math.round(D.raised/D.goal*100)):0;
 document.getElementById('raised').textContent=nf(D.raised);
