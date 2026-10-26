@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Organização humanitária de Angola</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&display=swap">
 <style>
 :root{--bg:#ffffff;--text:#1a1a1a;--green:#12a84b;--green-dark:#0d5a2c;--slate:#5b6678;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;font-weight:600}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Poppins",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;font-weight:800}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:30}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#fff;border-bottom:1px solid #e5e5e5}
 .bar{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 20px}
@@ -25,21 +26,72 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#f
 .divider{height:1px;background:#e3e3e3;margin:8px 0}
 .badge{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;background:#eaf7ee;color:var(--green-dark);border:2px solid #bfe6cb;border-radius:14px;padding:16px;font-weight:900;font-size:1rem}
 .badge svg{width:22px;height:22px;fill:var(--green-dark)}
-main{max-width:720px;margin:0 auto;padding:32px 20px 120px}
-h1{font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.15;margin:0 0 20px;font-weight:900}
+main{max-width:720px;margin:0 auto;padding:32px 20px 210px}
+h1{margin:0 0 20px;font-weight:700;line-height:1.2;letter-spacing:-.01em;color:#111;font-size:calc(min(100vw - 40px, 680px) / 17)}
+h1 span{display:block;white-space:nowrap}
+.hero{display:block;width:calc(100% + 40px);margin:0 -20px 18px;aspect-ratio:16/10;background:#eaf7ee;border-top:1px solid #bfe6cb;border-bottom:1px solid #bfe6cb;object-fit:cover;color:var(--green-dark);font-weight:900;display:flex;align-items:center;justify-content:center}
+.tags{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;margin:0 0 8px}
+.tag{display:inline-flex;align-items:center;background:#c9efd6;color:var(--green);border:2px solid #9fd3b2;border-radius:999px;padding:.75em 1.1em;font-weight:900;font-size:min(3.6vw,1.05rem);white-space:nowrap;position:relative;overflow:hidden;animation:glow 2.2s ease-in-out infinite}
+.tag::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:shine 3s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 6px 0 rgba(18,168,75,.25)}50%{box-shadow:0 0 18px 4px rgba(18,168,75,.5)}}
+@keyframes shine{0%{left:-60%}60%,100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.tag,.tag::after,.cta::after,.dbtn,.dbtn::after{animation:none}}
+.tag svg{width:18px;height:18px;fill:var(--green)}
+.org{display:inline-flex;align-items:center;background:#f6f7f9;color:#3f4a5c;border-radius:999px;padding:.75em 1.1em;font-weight:900;font-size:min(3.6vw,1.05rem);white-space:nowrap}
+.hero{position:relative;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stats{margin:22px 0 8px}
+.nums{display:flex;align-items:stretch}
+.col{flex:1 1 0;min-width:0;padding:0 12px}
+.col:first-child{padding-left:0}
+.col:last-child{padding-right:0}
+.col+.col{border-left:1px solid #d9dde3}
+.col.mid{display:flex;flex-direction:column;justify-content:center}
+.big{font-weight:800;font-size:min(4vw,1.5rem);line-height:1.35;white-space:nowrap;color:#111}
+.lbl{font-weight:500;font-size:min(3.4vw,1.05rem);color:#333;white-space:nowrap}
+.prog{height:14px;background:#e3e8ef;border-radius:999px;margin:18px 0 14px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#3cc47a,#1fae5b 70%,#c8efd5 88%,#1fae5b);transition:width .8s}
+.pm{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:min(3.8vw,1.1rem);font-weight:500;white-space:nowrap}
+.pm b{font-weight:800}
+.pm svg{width:1.1em;height:1.1em;fill:var(--green);vertical-align:-.15em;margin-right:6px}
+.cta{display:block;width:100%;position:relative;overflow:hidden;margin:18px 0 10px;padding:12px;border-radius:12px;border:2px solid #6fd09a;background:linear-gradient(#34c070,#12a84b);color:#10261a;font-weight:800;font-size:min(3.8vw,1rem);text-transform:uppercase;text-align:center;text-decoration:none;box-shadow:0 6px 14px rgba(18,168,75,.28)}
+.cta::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:shine 2.6s ease-in-out infinite}
+.share{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:10px;border-radius:12px;border:2px solid #9fd3b2;background:#fff;color:var(--green);font-family:inherit;font-weight:800;font-size:min(3.6vw,.95rem);cursor:pointer}
+.share svg{width:1.2em;height:1.2em;fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hist p{color:#222;font-weight:700;margin:0 0 12px}
+.hist .lead{color:var(--green);font-weight:900;font-size:1.05rem}
+.hist h3{color:var(--green);font-weight:900;font-size:.95rem;letter-spacing:.08em;margin:24px 0 6px}
+.hist h4{color:var(--green-dark);font-weight:900;font-size:1.2rem;margin:30px 0 8px}
+.hist ul{list-style:none;padding:0;margin:0}
+.hist li{position:relative;padding-left:22px;margin:6px 0;color:#222;font-weight:700}
+.hist li::before{content:"–";position:absolute;left:0;color:var(--green);font-weight:900}
+section.hist{background:#fff;border:1px solid #eceef1;border-radius:18px;box-shadow:0 4px 18px rgba(20,30,40,.08);padding:18px 16px}
+.hist .hh{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:.9rem;font-weight:700;color:#111}
+.hist .hh i{width:24px;height:24px;border-radius:7px;background:#d4f1df;display:inline-flex;align-items:center;justify-content:center}
+.hist .hh svg{width:14px;height:14px;fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+section.hist p{font-weight:400;font-size:.82rem;line-height:1.55;color:#1c1c1c;margin:0 0 16px}
+section.hist p:last-child{margin-bottom:0}
+.donate{position:fixed;left:0;right:0;bottom:0;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));z-index:10;pointer-events:none}
+.dcard{pointer-events:auto;max-width:720px;margin:0 auto;background:#fff;border:1px solid #e1e4e8;border-radius:22px;box-shadow:0 8px 28px rgba(15,23,42,.16);padding:12px 16px 12px}
+.drow{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.dval{font-weight:800;font-size:min(6.2vw,1.7rem);line-height:1.15;color:#0f172a;white-space:nowrap}
+.dsub{font-weight:600;font-size:min(3.2vw,.8rem);color:#64748b;white-space:nowrap}
+.dbtn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;flex:none;background:linear-gradient(#34d082,#27c274);color:#1f2328;border-radius:16px;padding:.8em 1.1em;font-weight:800;font-size:min(3.4vw,.95rem);text-transform:uppercase;text-decoration:none;white-space:nowrap;animation:glow 2s ease-in-out infinite}
+.dbtn svg{width:1.2em;height:1.2em;fill:#222}
+.dbtn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:shine 2.4s ease-in-out infinite}
+.dprog{height:10px;background:#e2e8f0;border-radius:999px;margin:10px 0 8px;overflow:hidden}
+.dfill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#3cc47a,#1fae5b);transition:width .8s}
+.dsup{display:flex;align-items:center;gap:8px;font-weight:600;font-size:min(3.4vw,.85rem);color:#64748b}
+.dsup svg{width:1.2em;height:1.2em;fill:var(--green)}
 section{margin:36px 0}
 h2{color:var(--green-dark);font-weight:900;margin:0 0 8px}
-section p{margin:0;color:#666}
-.donate{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #e5e5e5;text-align:center;z-index:10}
-.donate a{display:block;max-width:720px;margin:0 auto;background:var(--green);color:#fff;font-weight:900;font-size:1.15rem;text-decoration:none;padding:16px;border-radius:12px}
-.donate a:hover{background:#0f8f3f}
+section p{margin:0;color:#444;font-weight:700}
 </style>
 </head>
 <body>
 <header>
 <div class="bar">
 <button class="burger" id="menuBtn" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
-<span class="brand">Organização humanitária</span>
 </div>
 </header>
 
@@ -54,14 +106,41 @@ section p{margin:0;color:#666}
 </aside>
 
 <main>
-<h1>Organização humanitária de Angola – ação direta, dignidade e contas abertas</h1>
-<section id="historia"><h2>A História</h2><p>Texto em breve.</p></section>
+<h1><span>Organização humanitária de</span><span>Angola – ação direta,</span><span>dignidade e contas abertas.</span></h1>
+<div class="hero" id="hero"><img src="file_00000000d9e0820e930d4cdd761b4d34_convert.jpg" alt="Organização humanitária de Angola" onerror="this.style.display='none'">Imagem em breve</div>
+<div class="tags"><span class="tag">Saúde / Tratamentos</span><span class="org">Angola AF</span></div>
+<div class="stats">
+<div class="nums">
+<div class="col"><div class="big">R$</div><div class="big" id="raised">0,00</div><div class="lbl">arrecadados</div></div>
+<div class="col mid"><div class="big" id="sup">0</div><div class="lbl">apoiadores</div></div>
+<div class="col"><div class="big">R$</div><div class="big" id="goal">0,00</div><div class="lbl">meta</div></div>
+</div>
+<div class="prog"><div class="fill" id="fill"></div></div>
+<div class="pm"><span><b id="pct">0%</b> da meta atingida</span><span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z"/></svg><span id="hearts">0</span> corações</span></div>
+</div>
+<a class="cta" href="#pix">Quero ajudar agora</a>
+<button class="share" id="shareBtn" type="button"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.600 10.500l6.800-4M8.600 13.500l6.800 4"/></svg><span id="shareTxt">Compartilhar</span></button>
+<section id="historia" class="hist"><h2 class="hh"><i><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg></i>A História</h2>
+<p>Organização humanitária de Angola – ação direta, dignidade e contas abertas.</p>
+<p>Atuamos onde a vulnerabilidade é mais dura, priorizando alimento seguro, medicamentos essenciais, curativos e proteção básica. Nosso compromisso é salvar vidas e prestar contas em público.</p>
+<p>MISSÃO</p>
+<p>Salvar vidas e restaurar dignidade, conectando quem pode ajudar a quem mais precisa em Angola, com rapidez e transparência.</p>
+<p>VISÃO</p>
+<p>Um país onde nenhuma criança morre por falta de alimento ou tratamento básico — com comunidades fortalecidas e informadas.</p>
+<p>VALORES</p>
+<p>– Transparência radical</p>
+<p>– Dignidade acima de tudo</p>
+<p>– Responsável</p>
+<p>Como começamos?</p>
+<p>A UNI Angola nasceu da necessidade de respostas rápidas e verificáveis em comunidades vulneráveis.</p>
+<p>De ações pontuais, evoluímos para operações constantes, com parceiros locais e prestação de contas pública.</p>
+</section>
 <section id="quem-ajudou"><h2>Quem Ajudou</h2><p>Texto em breve.</p></section>
 <section id="pix"><h2>Pix Direto</h2><p>Texto em breve.</p></section>
 <section id="faq"><h2>Perguntas Frequentes</h2><p>Texto em breve.</p></section>
 </main>
 
-<div class="donate"><a href="#pix">Quero doar agora</a></div>
+<div class="donate"><div class="dcard"><div class="drow"><div><div class="dval" id="dRaised">R$ 0,00</div><div class="dsub" id="dGoal">de R$ 0,00 • 0%</div></div><a class="dbtn" href="#pix"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg>Doar agora</a></div><div class="dprog"><div class="dfill" id="dFill"></div></div><div class="dsup"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg><span id="dSup">0 apoiadores</span></div></div></div>
 
 <script>
 var b=document.getElementById('menuBtn'),d=document.getElementById('drawer'),o=document.getElementById('overlay');
@@ -69,6 +148,24 @@ function set(v){d.classList.toggle('open',v);o.classList.toggle('open',v);b.setA
 b.addEventListener('click',function(){set(true)});
 o.addEventListener('click',function(){set(false)});
 d.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+// Valores reais da campanha: edite aqui
+var D={raised:0,goal:1395800,supporters:0,hearts:0};
+(function(){var nf=function(n){return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})},ni=function(n){return n.toLocaleString('pt-BR')};
+var p=D.goal>0?Math.min(100,Math.round(D.raised/D.goal*100)):0;
+document.getElementById('raised').textContent=nf(D.raised);
+document.getElementById('goal').textContent=nf(D.goal);
+document.getElementById('sup').textContent=ni(D.supporters);
+document.getElementById('hearts').textContent=ni(D.hearts);
+document.getElementById('pct').textContent=p+'%';
+document.getElementById('fill').style.width=p+'%';
+document.getElementById('dRaised').textContent='R$ '+nf(D.raised);
+document.getElementById('dGoal').textContent='de R$ '+nf(D.goal)+' • '+p+'%';
+document.getElementById('dFill').style.width=p+'%';
+document.getElementById('dSup').textContent=ni(D.supporters)+' apoiadores';})();
+var sb=document.getElementById('shareBtn'),st=document.getElementById('shareTxt');
+sb.addEventListener('click',function(){var data={title:document.title,url:location.href};
+if(navigator.share){navigator.share(data).catch(function(){});}
+else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){st.textContent='Link copiado!';setTimeout(function(){st.textContent='Compartilhar'},2000)}).catch(function(){})}});
 </script>
 </body>
 </html>
