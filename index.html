@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Organização humanitária de Angola</title>
+<style>
+:root{--bg:#ffffff;--text:#1a1a1a;--green:#12a84b;--green-dark:#0d5a2c;--slate:#5b6678;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;font-weight:600}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#fff;border-bottom:1px solid #e5e5e5}
+.bar{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 20px}
+.brand{font-weight:900;color:var(--green);font-size:1.05rem}
+.burger{background:none;border:0;padding:8px 8px 8px 0;cursor:pointer;display:flex;flex-direction:column;gap:5px}
+.burger span{display:block;width:26px;height:3px;background:var(--green);border-radius:2px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;left:0;bottom:0;width:min(330px,86vw);background:#fff;z-index:50;transform:translateX(-100%);transition:transform .25s;padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer a{display:flex;align-items:center;gap:16px;padding:18px 0;color:var(--green);font-weight:900;font-size:1.3rem;text-decoration:none}
+.drawer svg{width:24px;height:24px;flex:none;stroke:var(--slate);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.drawer svg .f{fill:var(--slate);stroke:none}
+.divider{height:1px;background:#e3e3e3;margin:8px 0}
+.badge{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;background:#eaf7ee;color:var(--green-dark);border:2px solid #bfe6cb;border-radius:14px;padding:16px;font-weight:900;font-size:1rem}
+.badge svg{width:22px;height:22px;fill:var(--green-dark)}
+main{max-width:720px;margin:0 auto;padding:32px 20px 120px}
+h1{font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.15;margin:0 0 20px;font-weight:900}
+section{margin:36px 0}
+h2{color:var(--green-dark);font-weight:900;margin:0 0 8px}
+section p{margin:0;color:#666}
+.donate{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #e5e5e5;text-align:center;z-index:10}
+.donate a{display:block;max-width:720px;margin:0 auto;background:var(--green);color:#fff;font-weight:900;font-size:1.15rem;text-decoration:none;padding:16px;border-radius:12px}
+.donate a:hover{background:#0f8f3f}
+</style>
+</head>
+<body>
+<header>
+<div class="bar">
+<button class="burger" id="menuBtn" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<span class="brand">Organização humanitária</span>
+</div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+<a href="#historia"><svg viewBox="0 0 24 24"><path d="M4 20h7"/><path d="M14.5 5.5l4 4L9 19l-5 1 1-5z"/></svg>A História</a>
+<a href="#quem-ajudou"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>Quem Ajudou</a>
+<div class="divider"></div>
+<a href="#pix"><svg viewBox="0 0 24 24"><rect class="f" x="9" y="2" width="6" height="6" rx="1.5" transform="rotate(45 12 5)"/><rect class="f" x="9" y="16" width="6" height="6" rx="1.5" transform="rotate(45 12 19)"/><rect class="f" x="2" y="9" width="6" height="6" rx="1.5" transform="rotate(45 5 12)"/><rect class="f" x="16" y="9" width="6" height="6" rx="1.5" transform="rotate(45 19 12)"/></svg>Pix Direto</a>
+<a href="#faq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><circle class="f" cx="12" cy="17" r="1"/></svg>Perguntas Frequentes</a>
+<div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#eaf7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Plataforma verificada e segura</div>
+</aside>
+
+<main>
+<h1>Organização humanitária de Angola – ação direta, dignidade e contas abertas</h1>
+<section id="historia"><h2>A História</h2><p>Texto em breve.</p></section>
+<section id="quem-ajudou"><h2>Quem Ajudou</h2><p>Texto em breve.</p></section>
+<section id="pix"><h2>Pix Direto</h2><p>Texto em breve.</p></section>
+<section id="faq"><h2>Perguntas Frequentes</h2><p>Texto em breve.</p></section>
+</main>
+
+<div class="donate"><a href="#pix">Quero doar agora</a></div>
+
+<script>
+var b=document.getElementById('menuBtn'),d=document.getElementById('drawer'),o=document.getElementById('overlay');
+function set(v){d.classList.toggle('open',v);o.classList.toggle('open',v);b.setAttribute('aria-expanded',v)}
+b.addEventListener('click',function(){set(true)});
+o.addEventListener('click',function(){set(false)});
+d.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+</script>
+</body>
+</html>
