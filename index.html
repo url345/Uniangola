@@ -83,6 +83,23 @@ section.hist p:last-child{margin-bottom:0}
 .dfill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#3cc47a,#1fae5b);transition:width .8s}
 .dsup{display:flex;align-items:center;gap:8px;font-weight:600;font-size:min(3.4vw,.85rem);color:#64748b}
 .dsup svg{width:1.2em;height:1.2em;fill:var(--green)}
+section.ap{background:#fff;border:1px solid #eceef1;border-radius:18px;box-shadow:0 4px 18px rgba(20,30,40,.08);padding:16px}
+.ap .hh{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:1.15rem;font-weight:800;color:#111}
+.ap .hh i{width:36px;height:36px;border-radius:10px;background:#c9efd6;display:inline-flex;align-items:center;justify-content:center}
+.ap .hh svg{width:18px;height:18px;fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ap .it{display:flex;align-items:center;gap:12px;border:1px solid #e3e6ea;border-radius:14px;padding:12px;margin:0 0 10px;background:#fff}
+.ap .av{width:44px;height:44px;border-radius:50%;background:#c9efd6;border:2px solid #9fd3b2;color:var(--green);font-weight:900;display:flex;align-items:center;justify-content:center;flex:none;font-size:.95rem}
+.ap .nm{font-weight:800;color:#111;font-size:1rem;line-height:1.2}
+.ap .tm{font-weight:400;color:#333;font-size:.85rem}
+.ap .vl{margin-left:auto;font-weight:900;color:#111;white-space:nowrap}
+.ap .empty{margin:0;font-weight:400;font-size:.85rem;color:#444}
+.faq .hh{font-size:min(6vw,1.45rem)}
+.faq details{border:1px solid #dfe3e8;border-radius:18px;margin:0 0 12px;background:#fff}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;font-weight:500;font-size:1rem;line-height:1.4;color:#111}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:20px;height:20px;flex:none;fill:none;stroke:#111;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.faq details[open] summary svg{transform:rotate(180deg)}
+.faq details p{margin:0;padding:0 20px 18px;font-weight:400;font-size:.9rem;line-height:1.55;color:#333}
 section{margin:36px 0}
 h2{color:var(--green-dark);font-weight:900;margin:0 0 8px}
 section p{margin:0;color:#444;font-weight:700}
@@ -135,9 +152,9 @@ section p{margin:0;color:#444;font-weight:700}
 <p>A UNI Angola nasceu da necessidade de respostas rápidas e verificáveis em comunidades vulneráveis.</p>
 <p>De ações pontuais, evoluímos para operações constantes, com parceiros locais e prestação de contas pública.</p>
 </section>
-<section id="quem-ajudou"><h2>Quem Ajudou</h2><p>Texto em breve.</p></section>
+<section id="quem-ajudou" class="ap"><h2 class="hh"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></i>Quem já ajudou</h2><div id="apList"></div></section>
 <section id="pix"><h2>Pix Direto</h2><p>Texto em breve.</p></section>
-<section id="faq"><h2>Perguntas Frequentes</h2><p>Texto em breve.</p></section>
+<section id="faq" class="ap faq"><h2 class="hh"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><circle cx="12" cy="17" r=".6"/></svg></i>Perguntas Frequentes</h2><details><summary>A doação é 100% segura?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>As doações são feitas por Pix, que é processado pelo seu banco com criptografia. Antes de confirmar o pagamento, confira na tela o nome de quem vai receber.</p></details><details><summary>Existe valor mínimo para doar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Você pode contribuir com o que o seu coração mandar! Cada doação faz uma diferença imensa para salvar vidas, garantir alimento e levar dignidade a quem mais precisa.</p></details><details><summary>Como saberei que o dinheiro foi usado corretamente?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>O organizador publicará atualizações com comprovantes a cada R$ 1.000 arrecadados. Você também pode acompanhar em tempo real aqui na página.</p></details><details><summary>Posso cancelar minha doação?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Doações via Pix são instantâneas e não podem ser revertidas automaticamente. Em caso de dúvidas, entre em contato com nossa equipe pelo suporte.</p></details></section>
 </main>
 
 <div class="donate"><div class="dcard"><div class="drow"><div><div class="dval" id="dRaised">R$ 0,00</div><div class="dsub" id="dGoal">de R$ 0,00 • 0%</div></div><a class="dbtn" href="#pix"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg>Doar agora</a></div><div class="dprog"><div class="dfill" id="dFill"></div></div><div class="dsup"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg><span id="dSup">0 apoiadores</span></div></div></div>
@@ -166,6 +183,20 @@ var sb=document.getElementById('shareBtn'),st=document.getElementById('shareTxt'
 sb.addEventListener('click',function(){var data={title:document.title,url:location.href};
 if(navigator.share){navigator.share(data).catch(function(){});}
 else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){st.textContent='Link copiado!';setTimeout(function(){st.textContent='Compartilhar'},2000)}).catch(function(){})}});
+// Doações reais: preencha com {nome:"Nome", quando:"há 2 horas", valor:100}. Use "Anônimo" se a pessoa preferir não aparecer.
+var APOIOS=[];
+(function(){var L=document.getElementById('apList');
+if(!APOIOS.length){var e=document.createElement('p');e.className='empty';e.textContent='Ainda não há doações registradas. Seja a primeira pessoa a ajudar.';L.appendChild(e);return}
+APOIOS.forEach(function(a){
+var ini=a.nome==='Anônimo'?'A':a.nome.split(' ').filter(Boolean).slice(0,2).map(function(w){return w[0].toUpperCase()}).join('');
+var it=document.createElement('div');it.className='it';
+var av=document.createElement('div');av.className='av';av.textContent=ini;
+var tx=document.createElement('div');
+var nm=document.createElement('div');nm.className='nm';nm.textContent=a.nome;
+var tm=document.createElement('div');tm.className='tm';tm.textContent=a.quando;
+tx.appendChild(nm);tx.appendChild(tm);
+var vl=document.createElement('div');vl.className='vl';vl.textContent='R$ '+a.valor.toLocaleString('pt-BR');
+it.appendChild(av);it.appendChild(tx);it.appendChild(vl);L.appendChild(it)})})();
 </script>
 </body>
 </html>
