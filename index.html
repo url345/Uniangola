@@ -165,6 +165,10 @@ section.apoie{background:#fff;border:1px solid #e6e9ed;border-radius:18px;box-sh
 .vm-boost b{display:block;font-weight:800;font-size:.95rem;color:#111;line-height:1.2}
 .vm-boost span{display:block;font-weight:400;font-size:.8rem;line-height:1.35;color:#9a4a0a;margin-top:2px}
 .vm-go svg.vm-pixic{fill:#0b1f12;stroke:none}
+
+.vm-qr{display:block;width:min(62vw,240px);height:auto;margin:6px auto 14px;border:1.5px solid #dbe3ee;border-radius:14px;padding:8px;background:#fff}
+.vm-qr[hidden]{display:none}
+textarea.vm-f{resize:none;font-size:.8rem;word-break:break-all}
 </style>
 </head>
 <body>
@@ -274,6 +278,22 @@ Gerar Pix agora
 <div class="vm-safe"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/></svg>Pagamento 100% seguro</div>
 </div>
 
+
+<!-- Passo 3: Pix gerado -->
+<div class="vm-step" id="vmS3" hidden>
+<div class="vm-h2">
+<span style="width:38px"></span>
+<h3 class="vm-t2">Pague com Pix</h3>
+<button class="vm-x" id="vmX3" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+</div>
+<div class="vm-don">Valor <b id="vmDon3">R$ 0,00</b></div>
+<img class="vm-qr" id="vmQr" alt="QR Code Pix" hidden>
+<label class="vm-lb" for="vmCode">Pix copia e cola</label>
+<textarea class="vm-f" id="vmCode" rows="4" readonly></textarea>
+<button class="vm-go" id="vmCopy" type="button">Copiar código</button>
+<div class="vm-safe"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/></svg>Pagamento 100% seguro</div>
+</div>
+
 </div>
 
 <script>
@@ -308,16 +328,17 @@ bindShare('shareBtn','shareTxt');bindShare('shareBtn2','shareTxt2');
 // Modal de doação
 (function(){
 var VALORES=[20,50,100,150,200,500,1000],POPULAR=50,BOOST=8.90;
+var API_URL='/api/charge'; // se o site ficar em outro domínio, use a URL completa da Vercel
 var ov=document.getElementById('vmOv'),sh=document.getElementById('vmSheet'),grid=document.getElementById('vmGrid'),
 inp=document.getElementById('vmInp'),err=document.getElementById('vmErr'),
-S1=document.getElementById('vmS1'),S2=document.getElementById('vmS2'),
+S1=document.getElementById('vmS1'),S2=document.getElementById('vmS2'),S3=document.getElementById('vmS3'),
 nome=document.getElementById('vmNome'),anon=document.getElementById('vmAnon'),
 tel=document.getElementById('vmTel'),boost=document.getElementById('vmBoost'),
 err2=document.getElementById('vmErr2'),don=document.getElementById('vmDon');
 window.valorDoacao=0;
 window.dadosDoacao=null;
 function brl(n){return 'R$ '+n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function passo(n){S1.hidden=(n!==1);S2.hidden=(n!==2)}
+function passo(n){S1.hidden=(n!==1);S2.hidden=(n!==2);S3.hidden=(n!==3)}
 
 VALORES.forEach(function(v){
 var c=document.createElement('button');c.type='button';c.className='vm-chip';c.dataset.v=v;
@@ -338,6 +359,7 @@ function abrir(){passo(1);sh.classList.add('open');ov.classList.add('open');docu
 function fechar(){sh.classList.remove('open');ov.classList.remove('open');document.body.style.overflow=''}
 document.getElementById('vmX').addEventListener('click',fechar);
 document.getElementById('vmX2').addEventListener('click',fechar);
+document.getElementById('vmX3').addEventListener('click',fechar);
 ov.addEventListener('click',fechar);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')fechar()});
 document.querySelectorAll('a.cta,a.dbtn,a.pixbtn').forEach(function(a){
@@ -384,9 +406,35 @@ var td=tel.value.replace(/\D/g,'');
 if(td&&td.length<10){err2.textContent='Celular incompleto. Confira o DDD e o número.';return}
 var total=window.valorDoacao+(boost.checked?BOOST:0);
 window.dadosDoacao={valor:window.valorDoacao,turbinar:boost.checked,total:total,nome:anon.checked?'Anônimo':nm,anonimo:anon.checked,telefone:td};
-fechar();
-// PRÓXIMO PASSO: enviar window.dadosDoacao ao provedor de Pix
-// e mostrar o QR Code + "copia e cola" (crie uma área para isso).
+var go2=document.getElementById('vmGo2'),lbl=go2.innerHTML;
+go2.disabled=true;go2.textContent='Gerando Pix...';
+fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount:total,description:'Doação UNI Angola'})})
+.then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+.then(function(x){if(!x.ok)throw new Error((x.j&&x.j.error)||'Não foi possível gerar o Pix.');mostrarPix(x.j,total)})
+.catch(function(e){err2.textContent=e.message||'Não foi possível gerar o Pix. Tente novamente.'})
+.then(function(){go2.disabled=false;go2.innerHTML=lbl});
+});
+
+// Lê a resposta da API de charge: procura o "copia e cola" (começa com 000201) e a imagem do QR
+function varrer(o,out,d){if(o==null||d>5)return;if(typeof o==='string'){out.push(o);return}if(typeof o==='object')for(var k in o)varrer(o[k],out,d+1)}
+function mostrarPix(j,total){
+var v=[];varrer(j,v,0);
+var code=v.filter(function(s){return s.indexOf('000201')===0})[0]||'';
+var img=v.filter(function(s){return /^data:image/.test(s)})[0]||
+v.filter(function(s){return /^https?:\/\/\S+$/.test(s)&&/qr|png|image/i.test(s)})[0]||
+(v.filter(function(s){return /^[A-Za-z0-9+\/=]{300,}$/.test(s)})[0]?'data:image/png;base64,'+v.filter(function(s){return /^[A-Za-z0-9+\/=]{300,}$/.test(s)})[0]:'');
+if(!code&&!img){console.log('Resposta da API de charge:',j);throw new Error('Resposta inesperada do Pix.')}
+var qr=document.getElementById('vmQr');
+qr.hidden=!img;if(img)qr.src=img;
+document.getElementById('vmCode').value=code;
+document.getElementById('vmDon3').textContent=brl(total);
+passo(3);
+}
+document.getElementById('vmCopy').addEventListener('click',function(){
+var t=document.getElementById('vmCode'),b=this;
+function ok(){b.textContent='Copiado!';setTimeout(function(){b.textContent='Copiar código'},2000)}
+if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(ok).catch(function(){t.select();document.execCommand('copy');ok()})}
+else{t.select();document.execCommand('copy');ok()}
 });
 })();
 </script>
