@@ -1,0 +1,9 @@
+{
+  "name": "uni-angola-pix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Página de doação com Pix via API de charge da Nova Pay (backend na Vercel)",
+  "engines": {
+    "node": ">=18"
+  }
+}
