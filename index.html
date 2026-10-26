@@ -178,9 +178,7 @@ section.apoie{background:#fff;border:1px solid #e6e9ed;border-radius:18px;box-sh
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer" aria-label="Menu">
 <a href="#historia"><svg viewBox="0 0 24 24"><path d="M4 20h7"/><path d="M14.5 5.5l4 4L9 19l-5 1 1-5z"/></svg>A História</a>
-<a href="#quem-ajudou"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>Quem Ajudou</a>
 <div class="divider"></div>
-<a href="#pix"><svg viewBox="0 0 24 24"><rect class="f" x="9" y="2" width="6" height="6" rx="1.5" transform="rotate(45 12 5)"/><rect class="f" x="9" y="16" width="6" height="6" rx="1.5" transform="rotate(45 12 19)"/><rect class="f" x="2" y="9" width="6" height="6" rx="1.5" transform="rotate(45 5 12)"/><rect class="f" x="16" y="9" width="6" height="6" rx="1.5" transform="rotate(45 19 12)"/></svg>Pix Direto</a>
 <a href="#faq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><circle class="f" cx="12" cy="17" r="1"/></svg>Perguntas Frequentes</a>
 <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#eaf7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Plataforma verificada e segura</div>
 </aside>
@@ -215,8 +213,6 @@ section.apoie{background:#fff;border:1px solid #e6e9ed;border-radius:18px;box-sh
 <p>A UNI Angola nasceu da necessidade de respostas rápidas e verificáveis em comunidades vulneráveis.</p>
 <p>De ações pontuais, evoluímos para operações constantes, com parceiros locais e prestação de contas pública.</p>
 </section>
-<section id="quem-ajudou" class="ap"><h2 class="hh"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></i>Quem já ajudou</h2><div id="apList"></div></section>
-<section id="pix"><h2>Pix Direto</h2><p>Texto em breve.</p></section>
 <section id="faq" class="ap faq"><h2 class="hh"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><circle cx="12" cy="17" r=".6"/></svg></i>Perguntas Frequentes</h2><details><summary>A doação é 100% segura?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Sim! Todas as doações são processadas com criptografia e passam pela verificação da plataforma Histórias Únicas antes de serem repassadas ao beneficiário.</p></details><details><summary>Existe valor mínimo para doar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Você pode contribuir com o que o seu coração mandar! Cada doação faz uma diferença imensa para salvar vidas, garantir alimento e levar dignidade a quem mais precisa.</p></details><details><summary>Como saberei que o dinheiro foi usado corretamente?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>O organizador publicará atualizações com comprovantes a cada R$ 1.000 arrecadados. Você também pode acompanhar em tempo real aqui na página.</p></details><details><summary>Posso cancelar minha doação?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Doações via Pix são instantâneas e não podem ser revertidas automaticamente. Em caso de dúvidas, entre em contato com nossa equipe pelo suporte.</p></details></section>
 
 <section id="apoie" class="apoie">
@@ -308,20 +304,6 @@ sb.addEventListener('click',function(){var data={title:document.title,url:locati
 if(navigator.share){navigator.share(data).catch(function(){});}
 else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){st.textContent='Link copiado!';setTimeout(function(){st.textContent='Compartilhar'},2000)}).catch(function(){})}});}
 bindShare('shareBtn','shareTxt');bindShare('shareBtn2','shareTxt2');
-// Doações reais: preencha com {nome:"Nome", quando:"há 2 horas", valor:100}. Use "Anônimo" se a pessoa preferir não aparecer.
-var APOIOS=[];
-(function(){var L=document.getElementById('apList');
-if(!APOIOS.length){var e=document.createElement('p');e.className='empty';e.textContent='Ainda não há doações registradas. Seja a primeira pessoa a ajudar.';L.appendChild(e);return}
-APOIOS.forEach(function(a){
-var ini=a.nome==='Anônimo'?'A':a.nome.split(' ').filter(Boolean).slice(0,2).map(function(w){return w[0].toUpperCase()}).join('');
-var it=document.createElement('div');it.className='it';
-var av=document.createElement('div');av.className='av';av.textContent=ini;
-var tx=document.createElement('div');
-var nm=document.createElement('div');nm.className='nm';nm.textContent=a.nome;
-var tm=document.createElement('div');tm.className='tm';tm.textContent=a.quando;
-tx.appendChild(nm);tx.appendChild(tm);
-var vl=document.createElement('div');vl.className='vl';vl.textContent='R$ '+a.valor.toLocaleString('pt-BR');
-it.appendChild(av);it.appendChild(tx);it.appendChild(vl);L.appendChild(it)})})();
 
 // Modal de doação
 (function(){
@@ -404,10 +386,7 @@ var total=window.valorDoacao+(boost.checked?BOOST:0);
 window.dadosDoacao={valor:window.valorDoacao,turbinar:boost.checked,total:total,nome:anon.checked?'Anônimo':nm,anonimo:anon.checked,telefone:td};
 fechar();
 // PRÓXIMO PASSO: enviar window.dadosDoacao ao provedor de Pix
-// e mostrar o QR Code + "copia e cola" dentro da seção #pix.
-var s=document.querySelector('#pix p');
-if(s)s.textContent='Valor do Pix: '+brl(total);
-document.getElementById('pix').scrollIntoView({behavior:'smooth'});
+// e mostrar o QR Code + "copia e cola" (crie uma área para isso).
 });
 })();
 </script>
