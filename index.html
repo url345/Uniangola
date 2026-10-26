@@ -13,7 +13,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Poppins",-appl
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:30}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#fff;border-bottom:1px solid #e5e5e5}
 .bar{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 20px}
-.logo{height:28px;width:auto;max-width:90px;border-radius:6px;display:block}
+.logo{height:38px;width:auto;max-width:120px;object-fit:contain;border-radius:10px;border:1px solid #e3e6ea;padding:3px;background:#fff;box-shadow:0 1px 4px rgba(15,23,42,.1);display:block}
 .burger{background:none;border:0;padding:8px 8px 8px 0;cursor:pointer;display:flex;flex-direction:column;gap:5px}
 .burger span{display:block;width:26px;height:3px;background:var(--green);border-radius:2px}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
