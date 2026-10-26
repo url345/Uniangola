@@ -35,7 +35,7 @@ h1 span{display:block;white-space:nowrap}
 .tag::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:shine 3s ease-in-out infinite}
 @keyframes glow{0%,100%{box-shadow:0 0 6px 0 rgba(18,168,75,.25)}50%{box-shadow:0 0 18px 4px rgba(18,168,75,.5)}}
 @keyframes shine{0%{left:-60%}60%,100%{left:130%}}
-@media (prefers-reduced-motion:reduce){.tag,.tag::after,.cta::after,.dbtn,.dbtn::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.tag,.tag::after,.cta::after,.dbtn,.dbtn::after,.pixbtn::after{animation:none}}
 .tag svg{width:18px;height:18px;fill:var(--green)}
 .org{display:inline-flex;align-items:center;background:#f6f7f9;color:#3f4a5c;border-radius:999px;padding:.75em 1.1em;font-weight:900;font-size:min(3.6vw,1.05rem);white-space:nowrap}
 .hero{position:relative;overflow:hidden}
@@ -103,6 +103,21 @@ section.ap{background:#fff;border:1px solid #eceef1;border-radius:18px;box-shado
 section{margin:36px 0}
 h2{color:var(--green-dark);font-weight:900;margin:0 0 8px}
 section p{margin:0;color:#444;font-weight:700}
+
+/* Card "Apoie agora" */
+section.apoie{background:#fff;border:1px solid #e6e9ed;border-radius:18px;box-shadow:0 4px 18px rgba(15,23,42,.08);padding:14px 14px}
+.apoie .ah{display:flex;align-items:center;gap:10px;margin:0 0 12px;color:#111;font-size:min(4.6vw,1.15rem);font-weight:800;line-height:1.1}
+.apoie .ah i{width:34px;height:34px;border-radius:10px;background:#d4f1df;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.apoie .ah svg{width:18px;height:18px;fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.apoie .aval{font-weight:800;font-size:min(6vw,1.5rem);line-height:1.15;color:#0b0b0b;white-space:nowrap}
+.apoie .agoal{font-weight:400;font-size:min(3.4vw,.85rem);color:#222;margin:2px 0 0;white-space:nowrap}
+.apoie .aprog{height:10px;background:#e2e8f0;border-radius:999px;margin:12px 0 14px;overflow:hidden}
+.apoie .afill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#3cc47a,#1fae5b);transition:width .8s}
+.pixbtn{display:block;width:100%;position:relative;overflow:hidden;padding:11px;border-radius:12px;border:2px solid #6fd09a;background:linear-gradient(#3cc47a,#1fae5b);color:#1f2328;font-family:inherit;font-weight:700;font-size:min(3.8vw,.95rem);text-align:center;text-decoration:none;box-shadow:0 4px 10px rgba(18,168,75,.25)}
+.pixbtn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 2.6s ease-in-out infinite}
+.apoie .share{margin-top:8px;padding:9px;border-radius:12px;border:2px solid #d8dce2;color:#222;font-weight:600;font-size:min(3.6vw,.9rem)}
+.apoie .share svg{stroke:#222}
+.extra-img{display:block;width:100%;height:auto;border-radius:18px;margin:16px 0 0}
 </style>
 </head>
 <body>
@@ -156,6 +171,16 @@ section p{margin:0;color:#444;font-weight:700}
 <section id="quem-ajudou" class="ap"><h2 class="hh"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></i>Quem já ajudou</h2><div id="apList"></div></section>
 <section id="pix"><h2>Pix Direto</h2><p>Texto em breve.</p></section>
 <section id="faq" class="ap faq"><h2 class="hh"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7"/><circle cx="12" cy="17" r=".6"/></svg></i>Perguntas Frequentes</h2><details><summary>A doação é 100% segura?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Sim! Todas as doações são processadas com criptografia e passam pela verificação da plataforma Histórias Únicas antes de serem repassadas ao beneficiário..</p></details><details><summary>Existe valor mínimo para doar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Você pode contribuir com o que o seu coração mandar! Cada doação faz uma diferença imensa para salvar vidas, garantir alimento e levar dignidade a quem mais precisa.</p></details><details><summary>Como saberei que o dinheiro foi usado corretamente?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>O organizador publicará atualizações com comprovantes a cada R$ 1.000 arrecadados. Você também pode acompanhar em tempo real aqui na página.</p></details><details><summary>Posso cancelar minha doação?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary><p>Doações via Pix são instantâneas e não podem ser revertidas automaticamente. Em caso de dúvidas, entre em contato com nossa equipe pelo suporte.</p></details></section>
+
+<section id="apoie" class="apoie">
+<div class="ah"><i><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg></i>Apoie agora</div>
+<div class="aval" id="aRaised">R$ 0,00</div>
+<div class="agoal" id="aGoal">de R$ 0,00</div>
+<div class="aprog"><div class="afill" id="aFill"></div></div>
+<a class="pixbtn" href="#pix">Doar com Pix</a>
+<button class="share" id="shareBtn2" type="button"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.600 10.500l6.800-4M8.600 13.500l6.800 4"/></svg><span id="shareTxt2">Compartilhar</span></button>
+</section>
+<img class="extra-img" src="file_0000000094b4820ea5a18e7087d31aa8.png" alt="Imagem da campanha" onerror="this.style.display='none'">
 </main>
 
 <div class="donate"><div class="dcard"><div class="drow"><div><div class="dval" id="dRaised">R$ 0,00</div><div class="dsub" id="dGoal">de R$ 0,00 • 0%</div></div><a class="dbtn" href="#pix"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg>Doar agora</a></div><div class="dprog"><div class="dfill" id="dFill"></div></div><div class="dsup"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"/></svg><span id="dSup">0 apoiadores</span></div></div></div>
@@ -179,11 +204,15 @@ document.getElementById('fill').style.width=p+'%';
 document.getElementById('dRaised').textContent='R$ '+nf(D.raised);
 document.getElementById('dGoal').textContent='de R$ '+nf(D.goal)+' • '+p+'%';
 document.getElementById('dFill').style.width=p+'%';
-document.getElementById('dSup').textContent=ni(D.supporters)+' apoiadores';})();
-var sb=document.getElementById('shareBtn'),st=document.getElementById('shareTxt');
+document.getElementById('dSup').textContent=ni(D.supporters)+' apoiadores';
+document.getElementById('aRaised').textContent='R$ '+nf(D.raised);
+document.getElementById('aGoal').textContent='de R$ '+nf(D.goal);
+document.getElementById('aFill').style.width=p+'%';})();
+function bindShare(btnId,txtId){var sb=document.getElementById(btnId),st=document.getElementById(txtId);
 sb.addEventListener('click',function(){var data={title:document.title,url:location.href};
 if(navigator.share){navigator.share(data).catch(function(){});}
-else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){st.textContent='Link copiado!';setTimeout(function(){st.textContent='Compartilhar'},2000)}).catch(function(){})}});
+else if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){st.textContent='Link copiado!';setTimeout(function(){st.textContent='Compartilhar'},2000)}).catch(function(){})}});}
+bindShare('shareBtn','shareTxt');bindShare('shareBtn2','shareTxt2');
 // Doações reais: preencha com {nome:"Nome", quando:"há 2 horas", valor:100}. Use "Anônimo" se a pessoa preferir não aparecer.
 var APOIOS=[];
 (function(){var L=document.getElementById('apList');
